@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:free_smile_app/screens/doctor_register.dart';
+import 'package:free_smile_app/screens/landing_page.dart';
+import 'package:free_smile_app/screens/patient_register.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,32 +18,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.dark(),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Free Smile'),
-        ),
-        body: Center(
-          child: Container(
-            height: 300,
-            width: 300,
-            decoration: BoxDecoration(
-              color: Colors.grey.shade400,
-              borderRadius: BorderRadius.circular(15),
-            ),
-            child: Center(
-              child: Text(
-                'Free Smile',
-                style: TextStyle(
-                  fontSize: 50,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blue,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
+      home: LandingPage(),
     );
   }
 }
