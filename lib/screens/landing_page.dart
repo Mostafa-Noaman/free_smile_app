@@ -1,9 +1,21 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:free_smile_app/screens/doctor_register.dart';
-import 'package:free_smile_app/screens/patient_register.dart';
+import 'package:free_smile_app/screens/doctor%20register/doctor_register_screen.dart';
+import 'package:free_smile_app/screens/login/login_screen.dart';
+import 'package:free_smile_app/screens/patient%20register/patient_register.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({Key? key}) : super(key: key);
+
+  Future<String> getServerDomain() async {
+    final dio = Dio();
+    final response = await dio
+        .get('https://api.github.com/gists/458cc68066d2c1e0fa01ba1271e81699');
+    final gist = response.data;
+    final content = gist['files']['ngrok.txt']['content'];
+    print(content);
+    return content;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -128,14 +140,13 @@ class LandingPage extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    print('sign in is tapped');
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => LoginScreen()));
                   },
-                  child: Container(
-                    child: Text(
-                      'sign in',
-                      style: TextStyle(
-                        color: Color(0xFF88cdca),
-                      ),
+                  child: Text(
+                    'sign in',
+                    style: TextStyle(
+                      color: Color(0xFF88cdca),
                     ),
                   ),
                 ),
