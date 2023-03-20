@@ -16,7 +16,7 @@ class LoginCubit extends Cubit<LoginStates> {
   void userLogin({required String emailUsername, required String password}) {
     emit(LoginLoadingState());
     DioHelper.postData(
-      'https://7472-197-41-116-114.eu.ngrok.io' + LOGIN,
+      'https://0db6-161-35-216-189.eu.ngrok.io' + LOGIN,
       {'usernameoremail': emailUsername, 'password': password},
       '',
     ).then((value) {

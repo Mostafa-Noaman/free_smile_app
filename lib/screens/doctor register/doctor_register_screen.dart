@@ -290,11 +290,10 @@ class _DoctorRegisterState extends State<DoctorRegister> {
                             TextFormField(
                               controller: phoneController,
                               validator: (value) {
-                                if (value == null) {
+                                if (value == '') {
                                   return null;
-                                } else if (value != null ||
-                                    !RegExp(r'^(?:[0][1-9])?[0-9]{10}$')
-                                        .hasMatch(value)) {
+                                } else if (!RegExp(r'^1[0-9]{9}$')
+                                    .hasMatch(value!)) {
                                   return 'Please enter correct phone number';
                                 }
                               },
@@ -329,12 +328,16 @@ class _DoctorRegisterState extends State<DoctorRegister> {
                               builder: (context) => TextButton(
                                 onPressed: () {
                                   if (_formKey.currentState!.validate()) {
+                                    String? phone = null;
+                                    if (!phoneController.text.isEmpty) {
+                                      phone = phoneController.text;
+                                    }
                                     DocRegisterCubit.get(context).userRegister(
                                       Username: userNameController.text,
                                       password: passwordController.text,
                                       email: emailController.text,
                                       fullName: fullNameController.text,
-                                      phone: phoneController.text,
+                                      phone: phone,
                                       gender: true,
                                     );
 

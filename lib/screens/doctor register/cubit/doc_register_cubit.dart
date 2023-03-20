@@ -18,11 +18,11 @@ class DocRegisterCubit extends Cubit<DocRegisterStates> {
       required String password,
       required String email,
       required String fullName,
-      required String phone,
+      String? phone,
       required bool gender}) {
     emit(DocRegisterLoadingState());
     DioHelper.postData(
-      'https://7472-197-41-116-114.eu.ngrok.io' + DOCREGISTER,
+      'https://0db6-161-35-216-189.eu.ngrok.io' + DOCREGISTER,
       {
         'fullname': fullName,
         'username': Username,
