@@ -1,10 +1,14 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:free_smile_app/network/dio_func.dart';
+import 'package:free_smile_app/screens/home%20page/home_screen.dart';
 
 import 'package:free_smile_app/screens/login/cubit/login_cubit.dart';
 import 'package:free_smile_app/screens/login/cubit/login_states.dart';
+import 'package:free_smile_app/shared/shared_preference.dart';
 
 import '../landing_page.dart';
 
@@ -14,6 +18,7 @@ class LoginScreen extends StatelessWidget {
   var _formKey = GlobalKey<FormState>();
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
+  late bool isVerified;
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +28,11 @@ class LoginScreen extends StatelessWidget {
           listener: (context, state) {
             if (state is LoginSucceedState) {
               print(state.loginModel.message);
+              CacheHelper.saveData(key: 'token', value: state.loginModel.token)
+                  .then((value) {
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => HomeScreen()));
+              });
               Fluttertoast.showToast(
                   msg: state.loginModel.message,
                   toastLength: Toast.LENGTH_LONG,
@@ -32,7 +42,6 @@ class LoginScreen extends StatelessWidget {
                   textColor: Colors.white,
                   fontSize: 16.0);
             } else if (state is LoginErrorState) {
-              //print(state.error);
               Fluttertoast.showToast(
                   msg: state.error.toString(),
                   toastLength: Toast.LENGTH_LONG,

@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:free_smile_app/screens/doctor%20register/doctor_register_screen.dart';
 import 'package:free_smile_app/screens/login/login_screen.dart';
-import 'package:free_smile_app/screens/patient%20register/patient_register.dart';
+import 'package:free_smile_app/screens/patient%20register/patient_register_screen.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({Key? key}) : super(key: key);

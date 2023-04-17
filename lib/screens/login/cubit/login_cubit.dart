@@ -1,6 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:free_smile_app/network/dio_func.dart';
 import 'package:free_smile_app/network/end_points.dart';
 import 'package:free_smile_app/screens/login/cubit/login_states.dart';
@@ -16,7 +18,7 @@ class LoginCubit extends Cubit<LoginStates> {
   void userLogin({required String emailUsername, required String password}) {
     emit(LoginLoadingState());
     DioHelper.postData(
-      'https://0db6-161-35-216-189.eu.ngrok.io' + LOGIN,
+      'https://df8d-167-172-184-1.eu.ngrok.io' + LOGIN,
       {'usernameoremail': emailUsername, 'password': password},
       '',
     ).then((value) {
@@ -49,7 +51,8 @@ class LoginCubit extends Cubit<LoginStates> {
         }
         emit(LoginErrorState(error.response?.data['error']));
       }
-
+      //
+      // emit(LoginErrorState(error.toString()));
       // print(error.toString());
     });
   }

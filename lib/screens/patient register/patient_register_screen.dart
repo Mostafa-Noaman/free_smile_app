@@ -1,25 +1,21 @@
-import 'dart:ffi';
-
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:dob_input_field/dob_input_field.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:free_smile_app/model/register_model.dart';
-import 'package:free_smile_app/network/dio_func.dart';
-import 'package:free_smile_app/screens/doctor%20register/cubit/doc_register_cubit.dart';
-import 'package:free_smile_app/screens/doctor%20register/cubit/doc_register_states.dart';
 
-class DoctorRegister extends StatefulWidget {
-  const DoctorRegister({Key? key}) : super(key: key);
+import 'cubit/patient_register_cubit.dart';
+import 'cubit/patient_register_states.dart';
+
+class PatientRegister extends StatefulWidget {
+  const PatientRegister({Key? key}) : super(key: key);
 
   @override
-  State<DoctorRegister> createState() => _DoctorRegisterState();
+  State<PatientRegister> createState() => _PatientRegisterState();
 }
 
-class _DoctorRegisterState extends State<DoctorRegister> {
+class _PatientRegisterState extends State<PatientRegister> {
   late String pass;
   var fullNameController = TextEditingController();
   var emailController = TextEditingController();
@@ -34,10 +30,10 @@ class _DoctorRegisterState extends State<DoctorRegister> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => DocRegisterCubit(),
-      child: BlocConsumer<DocRegisterCubit, DocRegisterStates>(
+      create: (BuildContext context) => PatientRegisterCubit(),
+      child: BlocConsumer<PatientRegisterCubit, PatientRegisterStates>(
         listener: (context, state) {
-          if (state is DocRegisterSucceedState) {
+          if (state is PatientRegisterSucceedState) {
             print(state.loginModel.message);
             Fluttertoast.showToast(
                 msg: state.loginModel.message,
@@ -47,7 +43,7 @@ class _DoctorRegisterState extends State<DoctorRegister> {
                 backgroundColor: Colors.green,
                 textColor: Colors.white,
                 fontSize: 16.0);
-          } else if (state is DocRegisterErrorState) {
+          } else if (state is PatientRegisterErrorState) {
             //print(state.error);
             Fluttertoast.showToast(
                 msg: state.error.toString(),
@@ -301,13 +297,13 @@ class _DoctorRegisterState extends State<DoctorRegister> {
                             SizedBox(
                               height: 10,
                             ),
-
-                            ///phone number field
                             Text(
                               'Phone Number (optional)',
                               style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.w500),
                             ),
+
+                            ///phone number field
                             TextFormField(
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
@@ -322,10 +318,6 @@ class _DoctorRegisterState extends State<DoctorRegister> {
                               },
                               obscureText: false,
                               keyboardType: TextInputType.phone,
-                              inputFormatters: [
-                                LengthLimitingTextInputFormatter(10),
-                                FilteringTextInputFormatter.digitsOnly
-                              ],
                               decoration: InputDecoration(
                                 contentPadding: EdgeInsets.symmetric(
                                     vertical: 15, horizontal: 9),
@@ -377,8 +369,6 @@ class _DoctorRegisterState extends State<DoctorRegister> {
                             SizedBox(
                               height: 20,
                             ),
-
-                            ///choosing gender field
                             Text(
                               'Gender',
                               style: TextStyle(
@@ -417,29 +407,26 @@ class _DoctorRegisterState extends State<DoctorRegister> {
                             ),
 
                             ConditionalBuilder(
-                              condition: state is! DocRegisterLoadingState,
+                              condition: state is! PatientRegisterLoadingState,
                               fallback: (context) =>
                                   Center(child: CircularProgressIndicator()),
                               builder: (context) => TextButton(
                                 onPressed: () {
                                   if (_formKey.currentState!.validate()) {
-                                    String? birth = null;
-                                    if (!birthController.text.isEmpty) {
-                                      birth = birthController.text;
-                                    }
                                     String? phone = null;
                                     if (!phoneController.text.isEmpty) {
                                       phone = phoneController.text;
                                     }
-                                    DocRegisterCubit.get(context).userRegister(
-                                      Username: userNameController.text,
-                                      password: passwordController.text,
-                                      email: emailController.text,
-                                      fullName: fullNameController.text,
-                                      phone: phone,
-                                      gender: Gender == 'Male' ? true : false,
-                                      birthDate: birth,
-                                    );
+                                    PatientRegisterCubit.get(context)
+                                        .userRegister(
+                                            Username: userNameController.text,
+                                            password: passwordController.text,
+                                            email: emailController.text,
+                                            fullName: fullNameController.text,
+                                            phone: phone,
+                                            gender:
+                                                Gender == 'Male' ? true : false,
+                                            birthDate: birthController.text);
                                   }
                                   print(Gender);
                                 },
