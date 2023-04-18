@@ -16,12 +16,17 @@ void main() async {
   Bloc.observer = MyBlocObserver();
   await CacheHelper.init();
   var token = CacheHelper.getData(key: 'token');
+  var onBoarding = CacheHelper.getData(key: 'onBoarding');
   Widget widget;
 
-  if (token != null) {
-    widget = HomeScreen();
+  if (onBoarding != null) {
+    if (token != null) {
+      widget = HomeScreen();
+    } else {
+      widget = LoginScreen();
+    }
   } else {
-    widget = LoginScreen();
+    widget = OnBoardingScreen();
   }
 
   runApp(MyApp(
@@ -43,7 +48,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: OnBoardingScreen(),
+      home: widget.startingWidget,
     );
   }
 }

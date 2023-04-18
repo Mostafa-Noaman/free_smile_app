@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:free_smile_app/screens/landing_page.dart';
+import 'package:free_smile_app/shared/shared_preference.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class Boarding {
@@ -19,26 +20,51 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   var boardController = PageController();
 
   List<Boarding> boardingPages = [
-    Boarding(image: 'images/onboarding1.png', description: 'description'),
-    Boarding(image: 'images/onboarding2.png', description: 'description'),
-    Boarding(image: 'images/onboarding3.png', description: 'description'),
+    Boarding(
+        image: 'images/onboarding1.png',
+        description:
+            'Find the best dentist from all over Egypt for any operation for free.'),
+    Boarding(
+        image: 'images/onboarding2.png',
+        description:
+            'Operations are done under supervision of university staff.'),
+    Boarding(
+        image: 'images/onboarding3.png',
+        description:
+            'Write and post about your dental needs and dentists can see your posts and chat with you.'),
   ];
 
   bool isLast = false;
+
+  void skip() {
+    CacheHelper.saveData(key: 'onBoarding', value: true).then((value) {
+      if (value) {
+        Navigator.pushAndRemoveUntil(
+            context, MaterialPageRoute(builder: (context) => LandingPage()),
+            (route) {
+          return false;
+        });
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xffcbe4de),
       appBar: AppBar(
+        titleSpacing: 5,
+        leading: Image(
+          image: AssetImage('images/sparkletooth.png'),
+        ),
+        title: Text(
+          'Free Smile',
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.w700),
+        ),
         actions: [
           TextButton(
             onPressed: () {
-              Navigator.pushAndRemoveUntil(context,
-                  MaterialPageRoute(builder: (context) => LandingPage()),
-                  (route) {
-                return false;
-              });
+              skip();
             },
             child: Text(
               'Skip',
@@ -58,10 +84,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           SizedBox(
             height: 20,
           ),
-          Text(
-            'Free Smile',
-            style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700),
-          ),
+          // Text(
+          //   'Free Smile',
+          //   style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700),
+          // ),
           Expanded(
             child: PageView.builder(
               controller: boardController,
@@ -88,11 +114,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           if (isLast) {
-            Navigator.pushAndRemoveUntil(
-                context, MaterialPageRoute(builder: (context) => LandingPage()),
-                (route) {
-              return false;
-            });
+            skip();
           } else {
             boardController.nextPage(
                 duration: Duration(milliseconds: 400), curve: Curves.easeIn);
@@ -136,18 +158,26 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             height: 15,
           ),
           Text(
-            'Welcome to freesmile',
+            'Welcome to free smile',
             style: TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.bold,
             ),
           ),
           SizedBox(
-            height: 10,
+            height: 20,
           ),
           Container(
             height: 180,
-            child: Text('${bordingModel.description}'),
+            width: 340,
+            child: Text(
+              '${bordingModel.description}',
+              style: TextStyle(
+                  fontSize: 30,
+                  fontStyle: FontStyle.italic,
+                  fontWeight: FontWeight.w400),
+              textAlign: TextAlign.center,
+            ),
           ),
         ],
       );
