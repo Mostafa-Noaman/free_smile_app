@@ -8,6 +8,7 @@ import 'package:free_smile_app/screens/landing_page.dart';
 import 'package:free_smile_app/screens/login/login_screen.dart';
 import 'package:free_smile_app/screens/onboarding/onboarding_screen.dart';
 import 'package:free_smile_app/screens/patient%20register/patient_register_screen.dart';
+import 'package:free_smile_app/screens/verify%20dentist/verify_dentist_screen.dart';
 import 'package:free_smile_app/shared/bloc_observer.dart';
 import 'package:free_smile_app/shared/shared_preference.dart';
 
@@ -48,7 +49,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: widget.startingWidget,
+      // home: widget.startingWidget,
+      home: VerifyDentist(),
     );
   }
 }

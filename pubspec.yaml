@@ -44,6 +44,9 @@ dependencies:
   fluttertoast: ^8.2.1
   shared_preferences: ^2.0.18
   smooth_page_indicator: ^1.1.0
+  calendar_date_picker2: ^0.5.2
+  intl: ^0.18.1
+  image_picker: ^0.8.7+1
 
 dev_dependencies:
   flutter_test:

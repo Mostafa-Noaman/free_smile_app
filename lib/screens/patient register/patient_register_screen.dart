@@ -2,8 +2,10 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:dio/dio.dart';
 import 'package:dob_input_field/dob_input_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:intl/intl.dart';
 
 import 'cubit/patient_register_cubit.dart';
 import 'cubit/patient_register_states.dart';
@@ -304,37 +306,66 @@ class _PatientRegisterState extends State<PatientRegister> {
                             ),
 
                             ///phone number field
-                            TextFormField(
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              controller: phoneController,
-                              validator: (value) {
-                                if (value == '') {
-                                  return null;
-                                } else if (!RegExp(r'^1[0-9]{9}$')
-                                    .hasMatch(value!)) {
-                                  return 'Please enter correct phone number';
-                                }
-                              },
-                              obscureText: false,
-                              keyboardType: TextInputType.phone,
-                              decoration: InputDecoration(
-                                contentPadding: EdgeInsets.symmetric(
-                                    vertical: 15, horizontal: 9),
-                                fillColor: Color(0xffa6e3e9),
-                                filled: true,
-                                hintText: 'Enter your phone number',
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide:
-                                      BorderSide(width: 3, color: Colors.blue),
-                                  borderRadius: BorderRadius.circular(10),
+                            Row(
+                              children: [
+                                Container(
+                                  width: 50,
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Color(0xffa6e3e9),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      '+20',
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      width: 3, color: Color(0xffa6e3e9)),
-                                  borderRadius: BorderRadius.circular(10),
+                                SizedBox(
+                                  width: 5,
                                 ),
-                              ),
+                                Expanded(
+                                  child: TextFormField(
+                                    autovalidateMode:
+                                        AutovalidateMode.onUserInteraction,
+                                    controller: phoneController,
+                                    validator: (value) {
+                                      if (value == '') {
+                                        return null;
+                                      } else if (!RegExp(r'^1[0-9]{9}$')
+                                          .hasMatch(value!)) {
+                                        return 'Please enter correct phone number';
+                                      }
+                                    },
+                                    obscureText: false,
+                                    keyboardType: TextInputType.phone,
+                                    inputFormatters: [
+                                      LengthLimitingTextInputFormatter(10),
+                                      FilteringTextInputFormatter.digitsOnly
+                                    ],
+                                    decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.symmetric(
+                                          vertical: 15, horizontal: 9),
+                                      fillColor: Color(0xffa6e3e9),
+                                      filled: true,
+                                      hintText: 'Enter your phone number',
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                            width: 3, color: Colors.blue),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                            width: 3, color: Color(0xffa6e3e9)),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                             SizedBox(
                               height: 20,
@@ -365,6 +396,21 @@ class _PatientRegisterState extends State<PatientRegister> {
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                               ),
+                              onTap: () async {
+                                DateTime? pickDate = await showDatePicker(
+                                  context: context,
+                                  initialDate: DateTime.now(),
+                                  firstDate: DateTime(1950),
+                                  lastDate: DateTime(2024),
+                                );
+                                if (pickDate != null) {
+                                  setState(() {
+                                    var result = DateFormat('yyyy-MM-dd')
+                                        .format(pickDate);
+                                    birthController.text = result.toString();
+                                  });
+                                }
+                              },
                             ),
                             SizedBox(
                               height: 20,
