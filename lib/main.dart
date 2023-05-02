@@ -2,8 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:free_smile_app/screens/OTP%20request/otp_screen.dart';
+import 'package:free_smile_app/screens/dentist%20home%20page/dentist_home_screen.dart';
 import 'package:free_smile_app/screens/doctor%20register/doctor_register_screen.dart';
-import 'package:free_smile_app/screens/home%20page/home_screen.dart';
 import 'package:free_smile_app/screens/landing_page.dart';
 import 'package:free_smile_app/screens/login/login_screen.dart';
 import 'package:free_smile_app/screens/onboarding/onboarding_screen.dart';
@@ -22,7 +22,7 @@ void main() async {
 
   if (onBoarding != null) {
     if (token != null) {
-      widget = HomeScreen();
+      widget = DentistHomeScreen();
     } else {
       widget = LoginScreen();
     }
@@ -50,7 +50,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       // home: widget.startingWidget,
-      home: VerifyDentist(),
+      home: DentistHomeScreen(),
     );
   }
 }

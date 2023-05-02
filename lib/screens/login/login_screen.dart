@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:free_smile_app/network/dio_func.dart';
-import 'package:free_smile_app/screens/home%20page/home_screen.dart';
 
 import 'package:free_smile_app/screens/login/cubit/login_cubit.dart';
 import 'package:free_smile_app/screens/login/cubit/login_states.dart';
 import 'package:free_smile_app/shared/shared_preference.dart';
 
+import '../dentist home page/dentist_home_screen.dart';
 import '../landing_page.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -30,8 +30,10 @@ class LoginScreen extends StatelessWidget {
               print(state.loginModel.message);
               CacheHelper.saveData(key: 'token', value: state.loginModel.token)
                   .then((value) {
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => HomeScreen()));
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => DentistHomeScreen()));
               });
               Fluttertoast.showToast(
                   msg: state.loginModel.message,
