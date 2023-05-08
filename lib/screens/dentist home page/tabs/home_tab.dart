@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:shimmer_animation/shimmer_animation.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({Key? key}) : super(key: key);
@@ -8,67 +10,119 @@ class HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State<HomeTab> {
+  bool isLoaded = false;
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(seconds: 3), () {
+      setState(() {
+        isLoaded = true;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: ListView(
-        children: [
-          Row(
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-                child: Container(
-                  width: 375,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    color: Color(0xffcbe4de),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Row(
-                    children: [
-                      IconButton(
-                        iconSize: 35,
-                        onPressed: () {},
-                        icon: Icon(Icons.account_circle_outlined),
-                      ),
-                      OutlinedButton(
-                        onPressed: () {},
-                        child: Text(
-                          'Click here to add case',
-                          style: TextStyle(
-                            color: Colors.black,
-                          ),
+      child: isLoaded
+          ? ListView(
+              children: [
+                Row(
+                  children: [
+                    Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+                      child: Container(
+                        width: 375,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: Color(0xffcbe4de),
+                          borderRadius: BorderRadius.circular(10),
                         ),
-                        style: OutlinedButton.styleFrom(
-                          fixedSize: Size(280, 40),
-                          backgroundColor: Colors.white,
-                          side: BorderSide(
-                            width: 1,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
+                        child: Row(
+                          children: [
+                            IconButton(
+                              iconSize: 35,
+                              onPressed: () {},
+                              icon: Icon(Icons.account_circle_outlined),
+                            ),
+                            OutlinedButton(
+                              onPressed: () {},
+                              child: Text(
+                                'Click here to add case',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                ),
+                              ),
+                              style: OutlinedButton.styleFrom(
+                                fixedSize: Size(280, 40),
+                                backgroundColor: Colors.white,
+                                side: BorderSide(
+                                  width: 1,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
+                PostBody(
+                    image: 'post1.jpg',
+                    postText: 'this text is for first post',
+                    postTitle: 'Teeth whitening case'),
+                PostBody(
+                    image: null,
+                    postText: 'this post is without any imagesin it',
+                    postTitle: 'just a test'),
+                PostBody(
+                    image: 'post2.jpeg',
+                    postText: '',
+                    postTitle: 'Different types of orthodontics'),
+                PostBody(
+                    image: 'post3.jpg',
+                    postText: 'i must make this thing work really fast',
+                    postTitle: 'Crown implanting'),
+                PostBody(
+                    image: 'post1.jpg',
+                    postText: 'this text is for first post',
+                    postTitle: 'Teeth whitening case'),
+                PostBody(
+                    image: null,
+                    postText: 'this post is without any imagesin it',
+                    postTitle: 'just a test'),
+                PostBody(
+                    image: 'post2.jpeg',
+                    postText: '',
+                    postTitle: 'Different types of orthodontics'),
+                PostBody(
+                    image: 'post3.jpg',
+                    postText: 'i must make this thing work really fast',
+                    postTitle: 'Crown implanting'),
+              ],
+            )
+          : Center(
+              child: SpinKitRing(
+                color: Color(0xff0e8388),
+                size: 80,
+                lineWidth: 5,
               ),
-            ],
-          ),
-          PostBody('post1.jpg'),
-          PostBody('post2.jpeg'),
-          PostBody('post3.jpg'),
-          PostBody(null),
-        ],
-      ),
+            ),
     );
   }
 }
 
 class PostBody extends StatelessWidget {
   late var image;
-  PostBody(this.image);
+  late String postTitle;
+  late String postText;
+  PostBody(
+      {required this.image, required this.postText, required this.postTitle});
 
   ImageCheck() {
     if (image != null) {
@@ -224,7 +278,7 @@ class PostBody extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      'Post title',
+                      '$postTitle',
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
                     ),
@@ -233,8 +287,7 @@ class PostBody extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Container(
                       width: 375,
-                      child: Text(
-                          'This is an example of a post text so we are talking about some things that can be written down here'),
+                      child: Text('$postText'),
                     ),
                   ),
                   ImageCheck(),
