@@ -73,34 +73,58 @@ class _HomeTabState extends State<HomeTab> {
                   ],
                 ),
                 PostBody(
+                    name: 'Mohamed',
+                    userName: 'Mohamed123',
+                    governorate: 'Cairo',
                     image: 'post1.jpg',
                     postText: 'this text is for first post',
                     postTitle: 'Teeth whitening case'),
                 PostBody(
+                    name: 'Ahmed',
+                    userName: 'Ahmed123',
+                    governorate: 'Cairo',
                     image: null,
                     postText: 'this post is without any imagesin it',
                     postTitle: 'just a test'),
                 PostBody(
+                    name: 'Kareem',
+                    userName: 'Kareem123',
+                    governorate: 'Alexandria',
                     image: 'post2.jpeg',
                     postText: '',
                     postTitle: 'Different types of orthodontics'),
                 PostBody(
+                    name: 'Mostafa',
+                    userName: 'Mostafa123',
+                    governorate: 'Dakahlia',
                     image: 'post3.jpg',
                     postText: 'i must make this thing work really fast',
                     postTitle: 'Crown implanting'),
                 PostBody(
+                    name: 'Ali',
+                    userName: 'Ali123',
+                    governorate: 'Cairo',
                     image: 'post1.jpg',
                     postText: 'this text is for first post',
                     postTitle: 'Teeth whitening case'),
                 PostBody(
+                    name: 'Adham',
+                    userName: 'Adham123',
+                    governorate: 'Giza',
                     image: null,
                     postText: 'this post is without any imagesin it',
                     postTitle: 'just a test'),
                 PostBody(
+                    name: 'Mohsin',
+                    userName: 'Mohsin123',
+                    governorate: 'Cairo',
                     image: 'post2.jpeg',
                     postText: '',
                     postTitle: 'Different types of orthodontics'),
                 PostBody(
+                    name: 'Ibrahim',
+                    userName: 'Ibrahim123',
+                    governorate: 'Cairo',
                     image: 'post3.jpg',
                     postText: 'i must make this thing work really fast',
                     postTitle: 'Crown implanting'),
@@ -121,8 +145,16 @@ class PostBody extends StatelessWidget {
   late var image;
   late String postTitle;
   late String postText;
+  late String name;
+  late String userName;
+  late String governorate;
   PostBody(
-      {required this.image, required this.postText, required this.postTitle});
+      {required this.name,
+      required this.userName,
+      required this.governorate,
+      required this.image,
+      required this.postText,
+      required this.postTitle});
 
   ImageCheck() {
     if (image != null) {
@@ -192,7 +224,7 @@ class PostBody extends StatelessWidget {
                                 child: Row(
                                   children: [
                                     Text(
-                                      'name',
+                                      '$name',
                                       style: TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.w700),
@@ -201,7 +233,7 @@ class PostBody extends StatelessWidget {
                                       width: 1,
                                     ),
                                     Text(
-                                      '@username',
+                                      '@$userName',
                                       style: TextStyle(
                                           fontSize: 13,
                                           color: Colors.grey,
@@ -228,7 +260,7 @@ class PostBody extends StatelessWidget {
                                 height: 20,
                                 color: Colors.white,
                                 child: Text(
-                                  'Dakahlia',
+                                  '$governorate',
                                   style: TextStyle(
                                       color: Colors.grey, fontSize: 12),
                                 ),
