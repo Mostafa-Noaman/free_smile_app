@@ -27,14 +27,15 @@ class _HomeTabState extends State<HomeTab> {
     return Container(
       child: isLoaded
           ? ListView(
+              padding: EdgeInsets.symmetric(horizontal: 13),
               children: [
                 Row(
                   children: [
                     Padding(
                       padding:
-                          EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+                          EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                       child: Container(
-                        width: 375,
+                        width: 314,
                         height: 50,
                         decoration: BoxDecoration(
                           color: Color(0xffcbe4de),
@@ -56,7 +57,7 @@ class _HomeTabState extends State<HomeTab> {
                                 ),
                               ),
                               style: OutlinedButton.styleFrom(
-                                fixedSize: Size(280, 40),
+                                fixedSize: Size(260, 40),
                                 backgroundColor: Colors.white,
                                 side: BorderSide(
                                   width: 1,
@@ -73,59 +74,73 @@ class _HomeTabState extends State<HomeTab> {
                   ],
                 ),
                 PostBody(
-                    name: 'Mohamed',
-                    userName: 'Mohamed123',
+                    name: 'Sara',
+                    userName: 'Sara_13567',
+                    profilePic: 'prof pic female.jpg',
                     governorate: 'Cairo',
-                    image: 'post1.jpg',
-                    postText: 'this text is for first post',
+                    postImage: 'post1.jpg',
+                    postText:
+                        'Proud to share this photo of the difference between before and after.',
                     postTitle: 'Teeth whitening case'),
                 PostBody(
-                    name: 'Ahmed',
-                    userName: 'Ahmed123',
-                    governorate: 'Cairo',
-                    image: null,
-                    postText: 'this post is without any imagesin it',
-                    postTitle: 'just a test'),
+                    name: 'Moraad',
+                    userName: 'Moraad@18983',
+                    profilePic: 'user image.jpg',
+                    governorate: 'Suez',
+                    postImage: null,
+                    postText:
+                        'I\'m looking for a patient who needs a crown implant',
+                    postTitle: 'Looking for a patient'),
                 PostBody(
                     name: 'Kareem',
                     userName: 'Kareem123',
+                    profilePic: 'user image.jpg',
                     governorate: 'Alexandria',
-                    image: 'post2.jpeg',
-                    postText: '',
+                    postImage: 'post2.jpeg',
+                    postText:
+                        'There are many different types of orthodontics.\n'
+                        'As shown in the photo, the upper one is "Regular metal orthodontic".\n'
+                        'The lower one is "Ceramic orthodontic", which is more transparent than the regular metal one.',
                     postTitle: 'Different types of orthodontics'),
                 PostBody(
                     name: 'Mostafa',
                     userName: 'Mostafa123',
+                    profilePic: 'user image.jpg',
                     governorate: 'Dakahlia',
-                    image: 'post3.jpg',
-                    postText: 'i must make this thing work really fast',
+                    postImage: 'post3.jpg',
+                    postText:
+                        'The following picture shows how the implanting of an artificial crown is done.',
                     postTitle: 'Crown implanting'),
                 PostBody(
                     name: 'Ali',
                     userName: 'Ali123',
+                    profilePic: 'user image.jpg',
                     governorate: 'Cairo',
-                    image: 'post1.jpg',
+                    postImage: 'post1.jpg',
                     postText: 'this text is for first post',
                     postTitle: 'Teeth whitening case'),
                 PostBody(
                     name: 'Adham',
                     userName: 'Adham123',
+                    profilePic: 'user image.jpg',
                     governorate: 'Giza',
-                    image: null,
+                    postImage: null,
                     postText: 'this post is without any imagesin it',
                     postTitle: 'just a test'),
                 PostBody(
                     name: 'Mohsin',
                     userName: 'Mohsin123',
+                    profilePic: 'user image.jpg',
                     governorate: 'Cairo',
-                    image: 'post2.jpeg',
+                    postImage: 'post2.jpeg',
                     postText: '',
                     postTitle: 'Different types of orthodontics'),
                 PostBody(
                     name: 'Ibrahim',
                     userName: 'Ibrahim123',
+                    profilePic: 'user image.jpg',
                     governorate: 'Cairo',
-                    image: 'post3.jpg',
+                    postImage: 'post3.jpg',
                     postText: 'i must make this thing work really fast',
                     postTitle: 'Crown implanting'),
               ],
@@ -142,24 +157,26 @@ class _HomeTabState extends State<HomeTab> {
 }
 
 class PostBody extends StatelessWidget {
-  late var image;
+  late var postImage;
+  late var profilePic;
   late String postTitle;
   late String postText;
   late String name;
   late String userName;
   late String governorate;
   PostBody(
-      {required this.name,
+      {required this.profilePic,
+      required this.name,
       required this.userName,
       required this.governorate,
-      required this.image,
+      required this.postImage,
       required this.postText,
       required this.postTitle});
 
   ImageCheck() {
-    if (image != null) {
+    if (postImage != null) {
       return Image(
-        image: AssetImage('images/$image'),
+        image: AssetImage('images/$postImage'),
         fit: BoxFit.cover,
       );
     } else {
@@ -182,14 +199,14 @@ class PostBody extends StatelessWidget {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
-              width: 375,
+              width: 314,
               // height: 450,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    width: 375,
+                    width: 314,
                     height: 80,
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -206,7 +223,7 @@ class PostBody extends StatelessWidget {
                               child: CircleAvatar(
                                 radius: 20,
                                 child: Image(
-                                  image: AssetImage('images/user image.jpg'),
+                                  image: AssetImage('images/$profilePic'),
                                 ),
                               ),
                             ),
@@ -247,7 +264,7 @@ class PostBody extends StatelessWidget {
                                 height: 20,
                                 color: Colors.white,
                                 child: Text(
-                                  'Patient',
+                                  'Doctor',
                                   style: TextStyle(
                                     color: Colors.blue,
                                     fontSize: 12,
@@ -295,7 +312,7 @@ class PostBody extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          width: 60,
+                          width: 1,
                         ),
                         Row(
                           children: [

@@ -26,14 +26,16 @@ class _ArticlesTabState extends State<ArticlesTab> {
     return Container(
       child: isLoaded
           ? ListView(
+              padding: EdgeInsets.symmetric(horizontal: 13),
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
                       padding:
-                          EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+                          EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                       child: Container(
-                        width: 375,
+                        width: 314,
                         height: 50,
                         decoration: BoxDecoration(
                           color: Color(0xffcbe4de),
@@ -55,7 +57,7 @@ class _ArticlesTabState extends State<ArticlesTab> {
                                 ),
                               ),
                               style: OutlinedButton.styleFrom(
-                                fixedSize: Size(280, 40),
+                                fixedSize: Size(260, 40),
                                 backgroundColor: Colors.white,
                                 side: BorderSide(
                                   width: 1,
@@ -73,14 +75,19 @@ class _ArticlesTabState extends State<ArticlesTab> {
                 ),
                 PostBody(
                     name: 'Mohamed',
-                    userName: 'Mohamed123',
-                    governorate: 'Cairo',
-                    image: 'post1.jpg',
-                    postText: 'this text is for first post',
-                    postTitle: 'Teeth whitening case'),
+                    userName: 'Mohamed_5543',
+                    profilePic: 'prof pic1.jpg',
+                    governorate: 'Dakahlia',
+                    image: 'article 1.jpg',
+                    postText:
+                        'Dr. Coronado says a toothache should always be evaluated by a dentist as soon as possible. If the pain occurs during the weekend, a holiday, or in the middle of the night, call your dentist’s office to see if an answering service can refer you to an emergency dentist. Alternatively, a dentist from the practice may take the call and be able to prescribe you an antibiotic, if an infection is suspected. But even if that takes care of the pain, you should follow up with an in-person appointment as soon as you can to address the underlying issue.\n'
+                        'Another option is to look online for an emergency dental clinic near you. If there’s no nearby clinic, your dentist doesn’t take emergency calls, and the pain is excruciating, consider going to the emergency room for pain relief, says Coronado. But know that you will still need a follow-up appointment so a dentist can examine and treat the dental problem.',
+                    postTitle:
+                        '3 Ways to Treat a Toothache if You Can\'t Get Immediate Dental Care'),
                 PostBody(
                     name: 'Ahmed',
                     userName: 'Ahmed123',
+                    profilePic: 'user image.jpg',
                     governorate: 'Cairo',
                     image: null,
                     postText: 'this post is without any imagesin it',
@@ -88,6 +95,7 @@ class _ArticlesTabState extends State<ArticlesTab> {
                 PostBody(
                     name: 'Kareem',
                     userName: 'Kareem123',
+                    profilePic: 'user image.jpg',
                     governorate: 'Alexandria',
                     image: 'post2.jpeg',
                     postText: '',
@@ -95,6 +103,7 @@ class _ArticlesTabState extends State<ArticlesTab> {
                 PostBody(
                     name: 'Mostafa',
                     userName: 'Mostafa123',
+                    profilePic: 'user image.jpg',
                     governorate: 'Dakahlia',
                     image: 'post3.jpg',
                     postText: 'i must make this thing work really fast',
@@ -102,6 +111,7 @@ class _ArticlesTabState extends State<ArticlesTab> {
                 PostBody(
                     name: 'Ali',
                     userName: 'Ali123',
+                    profilePic: 'user image.jpg',
                     governorate: 'Cairo',
                     image: 'post1.jpg',
                     postText: 'this text is for first post',
@@ -109,6 +119,7 @@ class _ArticlesTabState extends State<ArticlesTab> {
                 PostBody(
                     name: 'Adham',
                     userName: 'Adham123',
+                    profilePic: 'user image.jpg',
                     governorate: 'Giza',
                     image: null,
                     postText: 'this post is without any imagesin it',
@@ -116,6 +127,7 @@ class _ArticlesTabState extends State<ArticlesTab> {
                 PostBody(
                     name: 'Mohsin',
                     userName: 'Mohsin123',
+                    profilePic: 'user image.jpg',
                     governorate: 'Cairo',
                     image: 'post2.jpeg',
                     postText: '',
@@ -123,6 +135,7 @@ class _ArticlesTabState extends State<ArticlesTab> {
                 PostBody(
                     name: 'Ibrahim',
                     userName: 'Ibrahim123',
+                    profilePic: 'user image.jpg',
                     governorate: 'Cairo',
                     image: 'post3.jpg',
                     postText: 'i must make this thing work really fast',
@@ -142,13 +155,15 @@ class _ArticlesTabState extends State<ArticlesTab> {
 
 class PostBody extends StatelessWidget {
   late var image;
+  late var profilePic;
   late String postTitle;
   late String postText;
   late String name;
   late String userName;
   late String governorate;
   PostBody(
-      {required this.name,
+      {required this.profilePic,
+      required this.name,
       required this.userName,
       required this.governorate,
       required this.image,
@@ -181,14 +196,14 @@ class PostBody extends StatelessWidget {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
-              width: 375,
+              width: 314,
               // height: 450,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    width: 375,
+                    width: 314,
                     height: 80,
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -205,7 +220,7 @@ class PostBody extends StatelessWidget {
                               child: CircleAvatar(
                                 radius: 20,
                                 child: Image(
-                                  image: AssetImage('images/user image.jpg'),
+                                  image: AssetImage('images/$profilePic'),
                                 ),
                               ),
                             ),
@@ -246,7 +261,7 @@ class PostBody extends StatelessWidget {
                                 height: 20,
                                 color: Colors.white,
                                 child: Text(
-                                  'Patient',
+                                  'Doctor',
                                   style: TextStyle(
                                     color: Colors.blue,
                                     fontSize: 12,
@@ -294,7 +309,7 @@ class PostBody extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          width: 60,
+                          width: 1,
                         ),
                         Row(
                           children: [

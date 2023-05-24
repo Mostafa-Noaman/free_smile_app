@@ -26,14 +26,15 @@ class _MarketTabState extends State<MarketTab> {
     return Container(
       child: isLoaded
           ? ListView(
+              padding: EdgeInsets.symmetric(horizontal: 13),
               children: [
                 Row(
                   children: [
                     Padding(
                       padding:
-                          EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+                          EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                       child: Container(
-                        width: 375,
+                        width: 314,
                         height: 50,
                         decoration: BoxDecoration(
                           color: Color(0xffcbe4de),
@@ -55,7 +56,7 @@ class _MarketTabState extends State<MarketTab> {
                                 ),
                               ),
                               style: OutlinedButton.styleFrom(
-                                fixedSize: Size(280, 40),
+                                fixedSize: Size(260, 40),
                                 backgroundColor: Colors.white,
                                 side: BorderSide(
                                   width: 1,
@@ -72,29 +73,33 @@ class _MarketTabState extends State<MarketTab> {
                   ],
                 ),
                 PostBody(
-                    name: 'Mohamed',
-                    userName: 'Mohamed123',
+                    name: 'Hassan',
+                    userName: 'Hassan#1999',
+                    profilePic: 'prof pic 2.jpeg',
                     governorate: 'Cairo',
                     image: 'hand piece.jpg',
                     postText: '',
                     postTitle: 'Hand pieces for sale'),
                 PostBody(
                     name: 'Ahmed',
-                    userName: 'Ahmed123',
+                    userName: 'Ahmed_24563',
+                    profilePic: 'user image.jpg',
                     governorate: 'Cairo',
                     image: null,
                     postText: 'this post is without any imagesin it',
                     postTitle: 'just a test'),
                 PostBody(
                     name: 'Kareem',
-                    userName: 'Kareem123',
+                    userName: 'Kareem43985',
+                    profilePic: 'user image.jpg',
                     governorate: 'Alexandria',
                     image: 'dentist tools.jpg',
                     postText: '',
                     postTitle: 'Essential tools for sale'),
                 PostBody(
                     name: 'Mostafa',
-                    userName: 'Mostafa123',
+                    userName: 'Mostafa254216',
+                    profilePic: 'user image.jpg',
                     governorate: 'Dakahlia',
                     image: 'dental-dam.jpg',
                     postText: '',
@@ -102,6 +107,7 @@ class _MarketTabState extends State<MarketTab> {
                 PostBody(
                     name: 'Ali',
                     userName: 'Ali123',
+                    profilePic: 'user image.jpg',
                     governorate: 'Cairo',
                     image: 'drill tips.jpg',
                     postText: '',
@@ -121,13 +127,15 @@ class _MarketTabState extends State<MarketTab> {
 
 class PostBody extends StatelessWidget {
   late var image;
+  late var profilePic;
   late String postTitle;
   late String postText;
   late String name;
   late String userName;
   late String governorate;
   PostBody(
-      {required this.name,
+      {required this.profilePic,
+      required this.name,
       required this.userName,
       required this.governorate,
       required this.image,
@@ -160,14 +168,14 @@ class PostBody extends StatelessWidget {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
-              width: 375,
+              width: 314,
               // height: 450,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    width: 375,
+                    width: 314,
                     height: 80,
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -184,7 +192,7 @@ class PostBody extends StatelessWidget {
                               child: CircleAvatar(
                                 radius: 20,
                                 child: Image(
-                                  image: AssetImage('images/user image.jpg'),
+                                  image: AssetImage('images/$profilePic'),
                                 ),
                               ),
                             ),
@@ -225,7 +233,7 @@ class PostBody extends StatelessWidget {
                                 height: 20,
                                 color: Colors.white,
                                 child: Text(
-                                  'Patient',
+                                  'Doctor',
                                   style: TextStyle(
                                     color: Colors.blue,
                                     fontSize: 12,
@@ -291,7 +299,7 @@ class PostBody extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          width: 60,
+                          width: 1,
                         ),
                         Column(
                           children: [
