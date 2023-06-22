@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:free_smile_app/screens/OTP%20request/otp_screen.dart';
+import 'package:free_smile_app/screens/dentist%20home%20page/chat/chat_conversations.dart';
 import 'package:free_smile_app/screens/dentist%20home%20page/dentist_home_screen.dart';
 import 'package:free_smile_app/screens/doctor%20register/doctor_register_screen.dart';
 import 'package:free_smile_app/screens/landing_page.dart';
@@ -50,7 +51,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       // home: widget.startingWidget,
-      home: DentistHomeScreen(),
+      home: ChatConversation(),
     );
   }
 }

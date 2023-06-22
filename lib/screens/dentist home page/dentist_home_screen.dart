@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:free_smile_app/screens/dentist%20home%20page/chat/chat_conversations.dart';
 import 'package:free_smile_app/screens/dentist%20home%20page/tabs/articles_tab.dart';
 import 'package:free_smile_app/screens/dentist%20home%20page/tabs/home_tab.dart';
 import 'package:free_smile_app/screens/dentist%20home%20page/tabs/market_tab.dart';
@@ -46,7 +47,12 @@ class _DentistHomeScreenState extends State<DentistHomeScreen> {
               ),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ChatConversation()));
+              },
               icon: Icon(
                 Icons.chat_bubble_outline_rounded,
                 color: Color(0xff2e4f4f),
