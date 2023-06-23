@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:free_smile_app/screens/dentist%20home%20page/chat/chat_screen.dart';
 
 import '../../../model/chat/chat_users_model.dart';
 
@@ -163,7 +164,11 @@ class _ConversationListState extends State<ConversationList> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        print(widget.name);
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => ChatScreen()));
+      },
       child: Container(
         padding: EdgeInsets.only(left: 16, right: 16, top: 10, bottom: 10),
         child: Row(
