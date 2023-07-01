@@ -8,6 +8,7 @@ import 'package:free_smile_app/screens/doctor%20register/doctor_register_screen.
 import 'package:free_smile_app/screens/landing_page.dart';
 import 'package:free_smile_app/screens/login/login_screen.dart';
 import 'package:free_smile_app/screens/onboarding/onboarding_screen.dart';
+import 'package:free_smile_app/screens/patient%20home%20screen/patient_home_screen.dart';
 import 'package:free_smile_app/screens/patient%20register/patient_register_screen.dart';
 import 'package:free_smile_app/screens/verify%20dentist/verify_dentist_screen.dart';
 import 'package:free_smile_app/shared/bloc_observer.dart';
@@ -51,7 +52,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       // home: widget.startingWidget,
-      home: ChatConversation(),
+      home: PatientHomeScreen(),
     );
   }
 }
