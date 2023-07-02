@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:free_smile_app/network/dio_func.dart';
+import 'package:free_smile_app/screens/OTP%20request/otp_screen.dart';
 
 import 'package:free_smile_app/screens/login/cubit/login_cubit.dart';
 import 'package:free_smile_app/screens/login/cubit/login_states.dart';
+import 'package:free_smile_app/screens/patient%20home%20screen/patient_home_screen.dart';
 import 'package:free_smile_app/shared/shared_preference.dart';
 
 import '../dentist home page/dentist_home_screen.dart';
@@ -33,7 +35,7 @@ class LoginScreen extends StatelessWidget {
                 Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => DentistHomeScreen()));
+                        builder: (context) => PatientHomeScreen()));
               });
               Fluttertoast.showToast(
                   msg: state.loginModel.message,

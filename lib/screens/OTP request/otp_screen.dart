@@ -1,9 +1,16 @@
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:free_smile_app/screens/login/login_screen.dart';
 
-class RequestOTP extends StatelessWidget {
+class RequestOTP extends StatefulWidget {
   const RequestOTP({Key? key}) : super(key: key);
 
+  @override
+  State<RequestOTP> createState() => _RequestOTPState();
+}
+
+class _RequestOTPState extends State<RequestOTP> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,7 +88,25 @@ class RequestOTP extends StatelessWidget {
                   backgroundColor: Color(0xFFacdfe8),
                   fixedSize: Size(300, 40),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                            title: Text('Success! Your account is verified.'),
+                            content: Text('Now you can login.'),
+                            actions: [
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                LoginScreen()));
+                                  },
+                                  child: Text('Login')),
+                            ],
+                          ));
+                },
                 child: Text(
                   'Submit',
                   style: TextStyle(color: Colors.black),

@@ -483,7 +483,7 @@ class _PatientRegisterState extends State<PatientRegister> {
                                   ),
                                 ),
                                 child: Text(
-                                  'Verify email',
+                                  'Register',
                                   style: TextStyle(color: Colors.black),
                                 ),
                               ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:free_smile_app/screens/dentist%20home%20page/chat/chat_screen.dart';
 
 import '../../dentist home page/tabs/articles_tab.dart';
 
@@ -79,10 +80,10 @@ class _PatientHomeTabState extends State<PatientHomeTab> {
                     userName: 'Sara_13567',
                     profilePic: 'prof pic female.jpg',
                     governorate: 'Cairo',
-                    postImage: 'post1.jpg',
+                    postImage: null,
                     postText:
-                        'Proud to share this photo of the difference between before and after.',
-                    postTitle: 'Teeth whitening case'),
+                        'I need a patient who needs a tooth nerve filling.',
+                    postTitle: 'Looking for patient'),
                 PostBody(
                     name: 'Moraad',
                     userName: 'Moraad@18983',
@@ -95,18 +96,15 @@ class _PatientHomeTabState extends State<PatientHomeTab> {
                 PostBody(
                     name: 'Kareem',
                     userName: 'Kareem123',
-                    profilePic: 'user image.jpg',
+                    profilePic: 'prof pic 2.jpeg',
                     governorate: 'Alexandria',
-                    postImage: 'post2.jpeg',
-                    postText:
-                        'There are many different types of orthodontics.\n'
-                        'As shown in the photo, the upper one is "Regular metal orthodontic".\n'
-                        'The lower one is "Ceramic orthodontic", which is more transparent than the regular metal one.',
-                    postTitle: 'Different types of orthodontics'),
+                    postImage: null,
+                    postText: 'I need a patient who needs teeth whitning.',
+                    postTitle: 'Looking for a patient'),
                 PostBody(
                     name: 'Mostafa',
                     userName: 'Mostafa123',
-                    profilePic: 'user image.jpg',
+                    profilePic: 'prof pic1.jpg',
                     governorate: 'Dakahlia',
                     postImage: 'post3.jpg',
                     postText:
@@ -369,7 +367,12 @@ class PostBody extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10),
                             ),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ChatScreen()));
+                          },
                           icon: Icon(Icons.chat_bubble_rounded),
                           label: Text('Chat'),
                         ),

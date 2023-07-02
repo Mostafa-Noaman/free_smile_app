@@ -27,7 +27,7 @@ class DocRegisterCubit extends Cubit<DocRegisterStates> {
       String? birthDate}) {
     emit(DocRegisterLoadingState());
     DioHelper.postData(
-      'https://df8d-167-172-184-1.eu.ngrok.io' + DOCREGISTER,
+      'https://9523-167-172-184-1.ngrok-free.app' + DOCREGISTER,
       {
         'fullname': fullName,
         'username': Username,

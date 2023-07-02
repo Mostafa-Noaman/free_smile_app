@@ -52,7 +52,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       // home: widget.startingWidget,
-      home: PatientHomeScreen(),
+      home: OnBoardingScreen(),
     );
   }
 }

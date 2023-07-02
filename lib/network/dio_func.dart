@@ -22,7 +22,7 @@ class DioHelper {
   static init() {
     dio = Dio(
       BaseOptions(
-          baseUrl: 'https://df8d-167-172-184-1.eu.ngrok.io',
+          baseUrl: 'https://9523-167-172-184-1.ngrok-free.app',
           headers: {'Content-Type': 'application/json'}),
     );
   }

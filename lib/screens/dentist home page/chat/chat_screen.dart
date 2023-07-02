@@ -13,14 +13,14 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   List<ChatMessage> messages = [
-    ChatMessage(messageContent: "Hello, Will", messageType: "receiver"),
-    ChatMessage(messageContent: "How have you been?", messageType: "receiver"),
     ChatMessage(
-        messageContent: "Hey Kriss, I am doing fine dude. wbu?",
+        messageContent:
+            "Good morning doctor Sara.\n You looking for a patient right?",
         messageType: "sender"),
-    ChatMessage(messageContent: "ehhhh, doing OK.", messageType: "receiver"),
     ChatMessage(
-        messageContent: "Is there any thing wrong?", messageType: "sender"),
+        messageContent: "Yes, so you want a tooth filling?",
+        messageType: "receiver"),
+    ChatMessage(messageContent: "Yeah that's right.", messageType: "sender"),
   ];
   TextEditingController messageController = TextEditingController();
 
@@ -49,7 +49,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   width: 2,
                 ),
                 CircleAvatar(
-                  backgroundImage: AssetImage('images/user1.jpg'),
+                  backgroundImage: AssetImage('images/prof pic female.jpg'),
                   maxRadius: 20,
                 ),
                 SizedBox(
@@ -61,7 +61,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        "Jane Russel",
+                        "Sara Ali",
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.w600),
                       ),
@@ -107,13 +107,13 @@ class _ChatScreenState extends State<ChatScreen> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         color: (messages[index].messageType == "receiver"
-                            ? Colors.grey.shade200
-                            : Colors.blue[200]),
+                            ? Colors.grey.shade700
+                            : Color(0xff0e8388)),
                       ),
                       padding: EdgeInsets.all(16),
                       child: Text(
                         messages[index].messageContent,
-                        style: TextStyle(fontSize: 15),
+                        style: TextStyle(fontSize: 15, color: Colors.white),
                       ),
                     ),
                   ),
@@ -136,7 +136,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       height: 30,
                       width: 30,
                       decoration: BoxDecoration(
-                        color: Colors.lightBlue,
+                        color: Color(0xff2e4f4f),
                         borderRadius: BorderRadius.circular(30),
                       ),
                       child: Icon(
@@ -175,7 +175,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       color: Colors.white,
                       size: 18,
                     ),
-                    backgroundColor: Colors.blue,
+                    backgroundColor: Color(0xff2e4f4f),
                     elevation: 0,
                   ),
                 ],

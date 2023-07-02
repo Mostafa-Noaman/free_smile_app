@@ -25,7 +25,7 @@ class PatientRegisterCubit extends Cubit<PatientRegisterStates> {
     Response response = Response(requestOptions: RequestOptions());
     emit(PatientRegisterLoadingState());
     DioHelper.postData(
-      'https://9406-167-172-184-1.eu.ngrok.io' + PATIENTREGISTER,
+      'https://9523-167-172-184-1.ngrok-free.app' + PATIENTREGISTER,
       {
         'fullname': fullName,
         'username': Username,

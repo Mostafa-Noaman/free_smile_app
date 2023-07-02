@@ -15,9 +15,9 @@ class ChatConversation extends StatefulWidget {
 class _ChatConversationState extends State<ChatConversation> {
   List<ChatUsers> chatUsers = [
     ChatUsers(
-        name: "Jane Russel",
-        messageText: "Awesome Setup",
-        imagePath: "images/user1.jpg",
+        name: "Sara Ali",
+        messageText: "So you want a tooth filling?",
+        imagePath: "images/prof pic female.jpg",
         time: "Now"),
     ChatUsers(
         name: "Glady's Murphy",
